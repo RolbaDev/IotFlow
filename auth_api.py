@@ -128,7 +128,7 @@ def register_device(device: DeviceRegister, user=Depends(get_current_user)):
 @app.get("/users", tags=["GET"], summary="Lista użytkowników")
 def list_users():
     users = []
-    for u in db["users"].find({}, {"password": 0}):
+    for u in db["users"].find({}):
         u["_id"] = str(u["_id"])
         users.append(u)
     return users
